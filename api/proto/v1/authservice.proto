@@ -1,0 +1,27 @@
+syntax = "proto3";
+package v1;
+option go_package = ".;v1";
+import "api/proto/v1/service.proto";
+import "api/proto/v1/google/api/annotations.proto";
+
+service AuthService{
+
+    rpc CustomerSignup(CustomerSignupRequest)returns(Response){
+        option (google.api.http) = {
+            post :"/v1/Customer/signup"
+        };
+    };
+
+    rpc CustomerSignout(CustomerSignoutRequest)returns(Response){
+        option (google.api.http) = {
+            post :"/v1/Customer/signout/{customer_id}"
+        };
+    };
+
+    rpc Login(LoginRequest)returns(Response){
+        option (google.api.http) = {
+            post :"/v1/login"
+        };
+    };
+}
+

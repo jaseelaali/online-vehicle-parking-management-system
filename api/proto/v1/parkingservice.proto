@@ -1,0 +1,14 @@
+syntax = "proto3";
+package v1;
+option go_package= ".;v1";
+import "api/proto/v1/service.proto";
+
+
+service ParkingService{
+    rpc Addnewslot(AddnewslotRequest)returns(Response);
+    rpc Updateslot(UpdateslotRequest)returns(Response);
+    rpc Deleteslot(SlotRequest)returns(Response);
+    rpc Displayslot(SlotRequest)returns(DisplayslotResponse);
+    rpc ParkingDetails(Noparam)returns(Response);
+    rpc ParkingHistory(ParkingHistoryRequest)returns(ParkingDetailsResponse);
+}

@@ -1,0 +1,135 @@
+syntax ="proto3";
+package v1;
+option go_package =".;v1";
+
+message LoginRequest{
+    string username = 1 ;
+    string password = 2 ;
+}
+
+message AddnewslotRequest{
+    int32   number_of_slots = 1 ;
+    string  category        = 2 ;
+    string  parking_palce   = 3 ;
+    string  landmark        = 4 ;
+}
+message SlotRequest{
+    string place    = 1 ;
+    string place_id = 2 ;
+    string slot_id  = 3 ;
+}
+
+message UpdateslotRequest{
+    int32   number_of_slots = 1 ;
+    string  category        = 2 ;
+    string  parking_palce   = 3 ;
+    string  landmark        = 4 ;
+    string  slot_id         = 5 ;
+}
+
+message DisplayslotResponse{
+    Slots       slot    = 1 ;
+    ErrorInfo   error   = 2 ;
+    SuccessInfo success = 3 ;
+}
+
+
+message DisplayPlacesResponse{
+    Places      place   = 1 ;
+    ErrorInfo   error   = 2 ;
+    SuccessInfo success = 3 ;
+}
+
+message ParkingDetailsResponse {
+    string    slot_id            = 1  ;
+    string    parking_id         = 2  ;
+    string    vehicle_reg_number = 3  ;
+    string    vehicle_name       = 4  ;
+    string    vehicle_type       = 5  ;
+    string    owner_name         = 6  ;
+    string    contact_number     = 7  ;
+    string    date               = 8  ;
+    string    time               = 9  ;
+    string    status             = 10 ;
+    ErrorInfo error              = 11 ; 
+
+}
+message ParkingHistoryRequest{
+    string from  = 1 ;
+    string to    = 2 ;
+    string place = 3 ;
+ 
+}
+message CustomerDetailsRequest{
+
+}
+
+
+message CustomerDetailsbyIdRequest{
+    string customer_id = 1 ;
+}
+
+message DeleteCustomerRequest{
+    string customer_id = 1 ;
+
+}
+message Noparam{}
+
+message CustomerSignupRequest{
+    string name     = 1 ;
+    string place    = 2 ;
+    string street   = 3 ;
+    string pincode  = 4 ;
+    string contact  = 5 ;
+    string email    = 6 ;
+    string username = 7 ;
+    string password = 8 ;
+}
+message CustomerSignoutRequest{
+    string customer_id = 1 ;
+}
+message Response{
+    SuccessInfo success = 1 ;
+    ErrorInfo   error   = 2 ;
+
+}
+
+message SlotCheckRequest{
+
+}
+
+message SlotBookingRequest{
+
+}
+message PayRequest{
+
+}
+message BookingListRequest {
+
+}
+message CheckoutRequest {
+
+}
+message ErrorInfo{
+    int32  statuscode = 1 ;
+    string error      = 2 ;
+    string message    = 3 ;
+}
+
+message SuccessInfo{
+    int32  statuscode = 1 ;
+    string message    = 2 ;
+}
+message Slots{
+    string slot_id      = 1 ;
+    string parking_id   = 2 ;
+    string vehicle_type = 3 ;
+    string place        = 4 ;
+    string landmark     = 5 ;
+    string status       = 6 ;
+}
+message Places{
+    string parking_id = 1 ;
+    string place      = 2 ;
+    string landmark   = 3 ;
+}

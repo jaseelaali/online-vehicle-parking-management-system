@@ -1,0 +1,68 @@
+syntax = "proto3";
+package v1;
+option go_package =".;v1";
+
+import "api/proto/v1/google/api/annotations.proto";
+import "api/proto/v1/service.proto";
+
+service AdminService{
+
+    rpc Addnewslot(AddnewslotRequest)returns(Response){
+        option (google.api.http) ={
+          post: "/v1/admin/addnewslot"
+         };
+        };
+
+    rpc Updateslot(UpdateslotRequest)returns(Response){
+        option (google.api.http) ={
+            put: "/v1/admin/updateslot/{slot_id}"
+        };
+    };
+
+    rpc Deleteslot(SlotRequest)returns(Response){
+        option (google.api.http) ={
+            delete: "/v1/admin/deleteslot/{slot_id}"
+        };
+    };
+    
+    rpc Displayslot(SlotRequest)returns(stream DisplayslotResponse){
+        option (google.api.http) ={
+            get: "/v1/admin/slots"
+        };
+    };
+
+    rpc DisplayPlaces(Noparam)returns(stream DisplayPlacesResponse){
+        option (google.api.http) ={
+            get: "/v1/admin/slots/places"
+        };
+    };
+    rpc ParkingDetails(SlotRequest)returns(ParkingDetailsResponse){
+        option (google.api.http) = {
+            get: "/v1/admin/parkingdetails"
+        };
+    };
+
+    rpc ParkingHistory(ParkingHistoryRequest)returns(ParkingDetailsResponse){
+        option (google.api.http) = {
+            get: "/v1/admin/history"
+        };
+    };
+
+    rpc CustomerDetails(CustomerDetailsRequest)returns(Response){
+        option (google.api.http) = {
+            get: "/v1/admin/customerdetails"
+        };
+    };
+
+    rpc CustomerDetailsbyId(CustomerDetailsbyIdRequest)returns(Response){
+        option (google.api.http) = {
+            get: "/v1/admin/customerdetails/{customer_id}"
+        };
+    };
+
+    rpc DeleteCustomer(DeleteCustomerRequest)returns(Response){
+        option (google.api.http) = {
+            delete: "/v1/admin/customer/{customer_id}"
+        };
+    };
+}

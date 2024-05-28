@@ -1,0 +1,41 @@
+syntax="proto3";
+package v1;
+option go_package=".;v1";
+import "api/proto/v1/service.proto";
+import "api/proto/v1/google/api/annotations.proto";
+
+service CustomerService{
+    rpc SlotCheck(SlotCheckRequest)returns(Response){
+        option (google.api.http) = {
+            get :"/v1/Customer/slotcheck"
+        };
+    };
+
+    rpc SlotBooking(SlotBookingRequest)returns(Response){
+        option (google.api.http) = {
+            post :"/v1/Customer/slotbooking"
+        };
+    };
+
+    rpc Pay(PayRequest)returns(Response){
+        option (google.api.http) = {
+            post :"/v1/Customer/pay"
+        };
+    };
+
+    rpc BookingList(BookingListRequest)returns(Response){
+        option (google.api.http) = {
+            get :"/v1/Customer/bookinglist"
+        };
+    };
+
+    rpc Checkout(CheckoutRequest)returns(Response){
+        option (google.api.http) = {
+            post :"/v1/Customer/checkout"
+        };
+    };
+    rpc CustomerDetails(CustomerDetailsRequest)returns(Response);
+    rpc CustomerDetailsbyId(CustomerDetailsbyIdRequest)returns(Response);
+    rpc DeleteCustomer(DeleteCustomerRequest)returns(Response);
+
+}
